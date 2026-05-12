@@ -40,8 +40,9 @@ Prefer the user's style:
 - Explain mechanisms and problem structure, not only summaries.
 - Keep enough descriptive evidence before critique. A good page should first make the paper's task, mechanism, experiment setup, and concrete numbers clear; then add critical judgment. Do not make the page mostly opinions.
 - Keep formulas and variables when they clarify interfaces.
-- Use paper figures/tables/project-page images as anchors.
-- Preserve a critical voice. Use a few `💡` / `‼️` / `🧪` callouts in `思考` when they make the page easier to scan, matching the user's existing PaperReading style. Do not use emoji page icons.
+- Golden rule for images: every image must呼应 and help the surrounding正文. Insert a figure only when the nearby paragraph/table uses it to explain a bottleneck, mechanism, setup, result, or limitation. Do not insert images just to make the page look richer.
+- Use paper figures/tables/project-page images as anchors in the section where they are discussed. Do not collect figures at the bottom as a generic `图表摘录` section unless it is a temporary staging area that will be cleaned up.
+- Preserve a critical voice in `思考`, matching the user's better PaperReading pages: `💡` for reusable insight, `‼️` for real risks/fairness/limitation questions, and `🧪` for testable follow-up experiments. Each callout should contain a few concrete points, not generic praise/criticism. Do not use emoji page icons.
 - Do not set a Notion page cover/background unless the user explicitly asks.
 - Link related notes only when they are existing pages under `实验室工作 / PaperReading`; do not link notes found elsewhere in Notion.
 - For experiments, always name the baselines, explain what each baseline represents, describe the evaluation setting/protocol, then interpret the main result and ablations. Avoid result tables without context.
@@ -53,7 +54,7 @@ Prefer the user's style:
    - If available, find project page/arXiv/GitHub and stable image assets, but do not assume every paper has a project page.
    - Prefer original paper/project figures over generic images.
    - If no stable figure URL exists, render/crop screenshots into local PNGs. The Notion connector cannot embed local paths.
-   - Upload local images with Notion's File Upload API via `scripts/upload_notion_images.py`, then append them as Notion-hosted image blocks. This requires `NOTION_TOKEN` or `NOTION_API_KEY` with access to the target page or its parent. Use `--cleanup` for temporary screenshots after successful upload.
+   - Upload local images with Notion's File Upload API via `scripts/upload_notion_images.py`, then insert them as Notion-hosted image blocks near the paragraph/table they explain. This requires `NOTION_TOKEN` or `NOTION_API_KEY` with access to the target page or its parent. Use `--after-block-id` when inserting after a known block and `--cleanup` for temporary screenshots after successful upload.
    - Use `scripts/prepare_notion_figures.py` to render/crop PNGs and generate a local manifest before upload.
    - Do not create hosted-image or Computer Use paste workarounds. If File Upload API is unavailable, keep the figure caption/link and mention that the image was not inserted.
 2. Run the first-principles analysis internally using `references/first-principles-prompt.md`.
@@ -64,7 +65,8 @@ Prefer the user's style:
    - `现况与动机`: problem, prior routes, why old interfaces fail, related-work links.
    - `方法`: one-sentence mechanism, task/interface, key designs, key formulas.
    - `实验`: experiment questions, baseline descriptions, evaluation set/protocol, main results, important ablations, and what the results do and do not prove. Include enough factual setup before critique.
-   - `思考`: reusable ideas, doubts/limitations, and possible follow-up experiments, usually grouped in a few `💡` / `‼️` / `🧪` callouts.
+   - `思考`: 2-3 compact callouts in the Point What You Mean style: reusable insight (`💡`), serious doubts/limitations (`‼️`), and testable follow-up experiments (`🧪`). Keep each point tied to a mechanism, evidence gap, or experiment design.
+   - Place each figure in context: teaser/problem figures in `现况与动机`, architecture/pipeline figures in `方法`, benchmark/result/ablation figures in `实验`, and only leave a separate figure list if the user explicitly asks.
 4. Search the existing `PaperReading` page for 3-8 important related works and use normal Markdown links to Notion pages. Link only pages that are children of `实验室工作 / PaperReading`. Do **not** use `<page>` tags in generated content; they may be escaped incorrectly.
 5. Create the page under `实验室工作 / PaperReading` without a page cover/background.
 6. Backlink maintenance: after creating or updating a page, inspect related existing PaperReading pages for natural mentions of the new paper/method. If a page already mentions the paper title, acronym, or method name, convert only that existing phrase into a normal Markdown link and keep the sentence text unchanged. Do not append generic tail lines by default. Append a minimal related-work sentence only when there is no natural mention and the backlink is genuinely useful. In the final response, report every backlink edit with page title, the sentence/snippet touched, and the phrase that was linked.

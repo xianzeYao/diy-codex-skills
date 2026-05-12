@@ -28,6 +28,7 @@ Do not add many mandatory headings. Add local headings only if they make the pag
 - Future Direction / Realization → `思考`, usually in a `🧪` callout.
 - User's reusable idea → `思考`, usually in a `💡` callout.
 - Use callout emoji sparingly in `思考` when it improves scanability. Do not use emoji page icons.
+- Match the stronger existing Point What You Mean style for `思考`: a few compact callouts, each with concrete numbered points. `💡` should capture reusable conceptual insights, `‼️` should name real risks/limitations/fairness issues, and `🧪` should propose experiments that can actually test a claim. Avoid vague "值得关注" comments.
 - Do not set Notion page covers/backgrounds unless the user explicitly asks.
 - Balance factual reconstruction and critique. The page should contain enough concrete paper content—task/interface, mechanism, dataset, baselines, metrics, ablations, and numbers—before giving judgments. If the content reads mostly like opinions, add more paper-grounded description first.
 
@@ -79,7 +80,18 @@ Fallback workflow for missing figure URLs:
 2. Upload the generated PNGs with `scripts/upload_notion_images.py --page-id <page-id> <image.png> --caption "..." --cleanup`. This uses Notion's File Upload API, stores the binary in Notion-managed storage, appends an image block, and removes temporary local screenshots after success.
 3. Do not create hosted-image or Computer Use paste workarounds. If File Upload API is unavailable or the integration lacks page access, keep a caption/link instead of inserting a broken image.
 
+Golden rule: images must呼应 and help the surrounding正文. Do not insert images for decoration, completeness, or page richness. Each image should make a nearby explanation easier to understand, inspect, or question.
+
 Do not use decorative or unrelated images. Every image should anchor a method, data, or experiment point.
+
+Place images where they are used, not in a bottom dump:
+
+- Teaser/problem figures belong in `现况与动机`, immediately after the paragraph that states the bottleneck.
+- Architecture, pipeline, data-construction, or loss diagrams belong in `方法`, close to the mechanism they explain.
+- Benchmark screenshots, task grids, result plots, and ablation figures belong in `实验`, next to the setting/result interpretation.
+- A separate `图表摘录` section is only acceptable as temporary staging while uploading/cropping; the final Notion page should usually remove it and distribute the images into context.
+
+If using Notion File Upload API for local screenshots, insert uploaded image blocks near the relevant content. Prefer `scripts/upload_notion_images.py --after-block-id <block-id>` when a precise insertion point is known. Do not leave all uploaded screenshots appended at the end just because the upload API defaults to appending.
 
 ## Related Work Linking
 
