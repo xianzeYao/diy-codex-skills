@@ -24,9 +24,10 @@ Do not add many mandatory headings. Add local headings only if they make the pag
 - Task → `方法`, usually under `Task` or folded into one-sentence mechanism.
 - Motivation / Challenge → `现况与动机`.
 - Insight + Novelty → `方法`, as concise mechanism explanation.
-- Potential Flaw → `思考` under `‼️`.
-- Future Direction / Realization → `思考` under `🧪`.
-- User's reusable idea → `思考` under `💡`.
+- Potential Flaw → `思考`, written as explicit doubts or limitations.
+- Future Direction / Realization → `思考`, written as possible follow-up directions.
+- User's reusable idea → `思考`, written as reusable insights.
+- Do not use emoji headings, emoji callouts, or emoji page icons unless the user explicitly asks.
 
 ## Formulas
 
@@ -56,11 +57,13 @@ Prefer:
 2. Paper/arXiv figures if extractable.
 3. Figure captions and links if images cannot be embedded.
 
+Not every paper has a project page. For papers without stable public image URLs, screenshots/crops are useful only if they can be uploaded or hosted as Notion-visible assets. Do not insert local filesystem image paths such as `/tmp/foo.png` into Notion; the connector strips them and leaves broken image blocks.
+
 Do not use decorative or unrelated images. Every image should anchor a method, data, or experiment point.
 
 ## Related Work Linking
 
-Search within `实验室工作 / PaperReading` for important related papers. Link only 3-8 high-value matches.
+Search within `实验室工作 / PaperReading` for important related papers. Link only 3-8 high-value matches that are actual children of the PaperReading page. Do not link random Notion pages, external notes, or pages found outside PaperReading unless the user explicitly asks.
 
 Use normal Markdown links:
 
