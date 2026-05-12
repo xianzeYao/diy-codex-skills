@@ -1,20 +1,70 @@
 ---
 name: paper-reading-notion
-description: Use when creating or updating the user's Notion PaperReading notes from a paper PDF, arXiv/project link, Zotero PDF path, or later reading discussion. Builds lightweight Notion pages under 实验室工作/PaperReading with figures, formulas, tables, related-work links, and the user's critical reading style.
+description: Use as the user's full paper-reading workspace: coarse-read a paper from PDF/arXiv/Zotero path, output first-principles analysis in chat, create/update Notion PaperReading notes, translate/analyze pasted paper paragraphs during精读, backfill the user's thoughts into Notion, and optionally test understanding.
 metadata:
   short-description: Create/update Notion PaperReading notes from papers
 ---
 
 # Paper Reading Notion
 
-Create and maintain the user's Notion `实验室工作 / PaperReading` pages.
+Create and maintain the user's Notion `实验室工作 / PaperReading` pages, while also supporting the full interactive reading loop in chat.
 
-Use this skill for two modes:
+Use this skill for four modes:
 
-- **Create mode**: user gives a PDF path, Zotero PDF path, arXiv link, project page, or paper title and asks to write/read it into Notion.
-- **Update mode**: user gives an existing PaperReading page plus refined thoughts,精读 discussion, translated paragraphs, critiques, or experiments to merge into the page.
+- **Coarse-read mode**: user gives a PDF path, Zotero PDF path, arXiv link, project page, or paper title and asks to read/analyze it. Output the first-principles coarse analysis in chat first when requested, then create/update the Notion page.
+- **Interactive精读 mode**: user pastes paper paragraphs in the same thread. Translate paragraph by paragraph and add brief analysis after each paragraph.
+- **Update/backfill mode**: user gives refined thoughts,精读 discussion, translated paragraphs, critiques, or experiments and asks to merge them into an existing PaperReading page.
+- **Test mode**: user asks to be tested on the paper. Generate understanding questions and later assess the user's answers.
 
-The goal is not to replace the user's精读. Codex should do the mechanical and structural work: extract paper material, build a good Notion draft, link existing notes, and later merge confirmed thoughts.
+The goal is not to replace the user's精读. Codex should keep the reading context, do the mechanical and structural work, build a good Notion draft, and preserve the user's own judgments as they emerge during discussion.
+
+## Chat Reading Workflow
+
+When the user starts a paper with this skill, keep the paper context active in the thread.
+
+### First pass: coarse read
+
+1. Read the paper and run `references/first-principles-prompt.md`.
+2. If the user asks for output, produce a chat analysis following `references/first-principles-prompt.md` directly, including its section structure and evidence labels:
+   - `Task`
+   - `Motivation / Challenge`
+   - `Insight`
+   - `Novelty`
+   - `Potential Flaw & Future Direction`
+   - optional `Realization` only when useful or requested
+3. Mark key claims as `【论文内容】`, `【我的推断】`, or `【不足以判断】`.
+4. After the chat analysis, create or update the Notion page using the light Notion structure below. Do not paste the full coarse-read report into Notion unless the user explicitly asks.
+
+### Interactive精读
+
+When the user pastes original paper paragraphs after the first pass:
+
+1. Translate paragraph by paragraph.
+2. After each paragraph, add 1-2 short explanations:
+   - `【本文角度】` what role this paragraph plays in the paper's logic.
+   - `【结合前文分析】` which part it maps to: Task / Challenge / Insight / Novelty / Potential flaw / Experiment.
+3. If a paragraph is transition, experiment organization, or contains no important new information, say so directly and do not over-interpret.
+4. Keep the user's paper-level context in mind; update earlier coarse judgments when精读 contradicts them.
+
+### Backfill during精读
+
+When the user says "写进 Notion", "回填", "更新这部分", or similar:
+
+1. Fetch the existing Notion page.
+2. Update only the closest relevant section.
+3. Preserve the user's wording when it carries their judgment or口语化 style. Lightly clean grammar, but do not turn their voice into generic academic prose.
+4. If the user's精读 contradicts the coarse draft, treat the精读 as higher priority and revise the draft.
+5. Report what section changed. If any backlink is changed, report the page title, sentence/snippet, and linked phrase.
+
+### Test
+
+When the user asks "测试我":
+
+1. Ask 5-8 questions.
+2. Start with overall understanding, then details, then transfer/generalization.
+3. Cover motivation, insight, novelty, experiment evidence, and flaw/future direction.
+4. For each question, state what ability it tests.
+5. After the user answers, judge whether they really understood and point out inaccurate or shallow parts.
 
 ## Required Style
 
