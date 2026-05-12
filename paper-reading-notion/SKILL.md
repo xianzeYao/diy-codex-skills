@@ -54,7 +54,7 @@ Prefer the user's style:
    - If available, find project page/arXiv/GitHub and stable image assets, but do not assume every paper has a project page.
    - Prefer original paper/project figures over generic images.
    - If no stable figure URL exists, render/crop screenshots into local PNGs. The Notion connector cannot embed local paths.
-   - Upload local images with Notion's File Upload API via `scripts/upload_notion_images.py`, then insert them as Notion-hosted image blocks near the paragraph/table they explain. This requires `NOTION_TOKEN` or `NOTION_API_KEY` with access to the target page or its parent. Use `--after-block-id` when inserting after a known block and `--cleanup` for temporary screenshots after successful upload.
+   - Upload local images with Notion's File Upload API via `scripts/upload_notion_images.py`, targeting the relevant page/block so the image appears near the paragraph/table it explains. This requires `NOTION_TOKEN` or `NOTION_API_KEY` with access to the target page or block. Use `--cleanup` for temporary screenshots after successful upload.
    - Use `scripts/prepare_notion_figures.py` to render/crop PNGs and generate a local manifest before upload.
    - Do not create hosted-image or Computer Use paste workarounds. If File Upload API is unavailable, keep the figure caption/link and mention that the image was not inserted.
 2. Run the first-principles analysis internally using `references/first-principles-prompt.md`.

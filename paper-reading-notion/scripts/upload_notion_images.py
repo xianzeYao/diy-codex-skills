@@ -18,7 +18,6 @@ import os
 import sys
 import uuid
 from pathlib import Path
-from typing import Optional
 from urllib import request
 from urllib.error import HTTPError
 
@@ -90,38 +89,24 @@ def send_upload(upload_url: str, path: Path, token: str, version: str) -> dict:
 
 
 def append_image(block_id: str, upload_id: str, caption: str, token: str, version: str) -> dict:
-    return insert_image(block_id, upload_id, caption, token, version, after_block_id=None)
-
-
-def insert_image(
-    block_id: str,
-    upload_id: str,
-    caption: str,
-    token: str,
-    version: str,
-    after_block_id: Optional[str],
-) -> dict:
     caption_rich_text = [{"type": "text", "text": {"content": caption}}] if caption else []
-    payload = {
-        "children": [
-            {
-                "type": "image",
-                "image": {
-                    "type": "file_upload",
-                    "file_upload": {"id": upload_id},
-                    "caption": caption_rich_text,
-                },
-            }
-        ]
-    }
-    if after_block_id:
-        payload["after"] = after_block_id
     return api_json(
         "PATCH",
         f"{API_BASE}/blocks/{block_id}/children",
         token,
         version,
-        payload,
+        {
+            "children": [
+                {
+                    "type": "image",
+                    "image": {
+                        "type": "file_upload",
+                        "file_upload": {"id": upload_id},
+                        "caption": caption_rich_text,
+                    },
+                }
+            ]
+        },
     )
 
 
@@ -129,7 +114,6 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("images", type=Path, nargs="+", help="Local image files")
     parser.add_argument("--page-id", "--block-id", dest="block_id", required=True, help="Target Notion page or block ID")
-    parser.add_argument("--after-block-id", help="Insert each image after this existing child block instead of appending at the end")
     parser.add_argument("--caption", default="", help="Caption to reuse for every uploaded image")
     parser.add_argument("--version", default=DEFAULT_VERSION, help="Notion-Version header")
     parser.add_argument("--cleanup", action="store_true", help="Delete local image files after successful upload")
@@ -137,7 +121,6 @@ def main() -> int:
 
     token = notion_token()
     uploaded: list[dict[str, str]] = []
-    after_block_id = args.after_block_id
 
     for image in args.images:
         image = image.expanduser().resolve()
@@ -151,10 +134,7 @@ def main() -> int:
         if sent.get("status") != "uploaded":
             raise SystemExit(f"upload did not complete for {image}: {sent}")
 
-        inserted = insert_image(args.block_id, upload_id, args.caption, token, args.version, after_block_id)
-        results = inserted.get("results") or []
-        if results:
-            after_block_id = results[-1].get("id") or after_block_id
+        append_image(args.block_id, upload_id, args.caption, token, args.version)
         uploaded.append({"file": str(image), "file_upload_id": upload_id})
 
         if args.cleanup:

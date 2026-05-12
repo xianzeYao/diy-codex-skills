@@ -91,7 +91,7 @@ Place images where they are used, not in a bottom dump:
 - Benchmark screenshots, task grids, result plots, and ablation figures belong in `实验`, next to the setting/result interpretation.
 - A separate `图表摘录` section is only acceptable as temporary staging while uploading/cropping; the final Notion page should usually remove it and distribute the images into context.
 
-If using Notion File Upload API for local screenshots, insert uploaded image blocks near the relevant content. Prefer `scripts/upload_notion_images.py --after-block-id <block-id>` when a precise insertion point is known. Do not leave all uploaded screenshots appended at the end just because the upload API defaults to appending.
+If using Notion File Upload API for local screenshots, target the page or content block that keeps the uploaded image near the relevant explanation. The current Notion API route appends uploaded images under the target block; do not leave all uploaded screenshots appended at the page end just because upload defaults are easier.
 
 ## Related Work Linking
 
