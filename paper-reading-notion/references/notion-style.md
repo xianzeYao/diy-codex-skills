@@ -31,6 +31,7 @@ Do not add many mandatory headings. Add local headings only if they make the pag
 - Match the stronger existing Point What You Mean style for `思考`: a few compact callouts, each with concrete numbered points. `💡` should capture reusable conceptual insights, `‼️` should name real risks/limitations/fairness issues, and `🧪` should propose experiments that can actually test a claim. Avoid vague "值得关注" comments.
 - Do not set Notion page covers/backgrounds unless the user explicitly asks.
 - Balance factual reconstruction and critique. The page should contain enough concrete paper content—task/interface, mechanism, dataset, baselines, metrics, ablations, and numbers—before giving judgments. If the content reads mostly like opinions, add more paper-grounded description first.
+- Keep method and experiment roles separate. Method sections should explain interfaces, information flow, training/inference procedure, and design tradeoffs. Result-like material—benchmark tables, timing/memory measurements, success rates, ablation numbers, or deployment cost evidence—belongs in `实验`, even if it evaluates one method component.
 
 ## Formulas
 
@@ -64,6 +65,8 @@ The experiment section should not be just a score table. Include:
 
 Prefer critical analysis after the factual setup. A useful pattern is: `baseline/setting -> result -> why it supports the mechanism -> limitation of the evidence`.
 
+Do not put experiment-style tables or measured results in `现况与动机` or `方法`. If a section mixes design and measurement, split it: keep the design explanation in `方法`, and move the measurement/cost evidence to an experiment subsection such as `推理成本`, `效率`, or `Ablation`.
+
 ## Images
 
 Prefer:
@@ -83,6 +86,8 @@ Fallback workflow for missing figure URLs:
 Golden rule: images must呼应 and help the surrounding正文. Do not insert images for decoration, completeness, or page richness. Each image should make a nearby explanation easier to understand, inspect, or question.
 
 Do not use decorative or unrelated images. Every image should anchor a method, data, or experiment point.
+
+Captions should be plain descriptive names. Avoid mechanical prefixes such as `Figure 1.`, `Fig.`, `Table`, or `Table/Figure`; Notion already renders the block as an image/table. Use `TraceVLA overview: original image + trace image + language instruction -> action tokens`, not `Figure 1. TraceVLA overview...`.
 
 Place images where they are used, not in a bottom dump:
 

@@ -46,6 +46,8 @@ Prefer the user's style:
 - Do not set a Notion page cover/background unless the user explicitly asks.
 - Link related notes only when they are existing pages under `实验室工作 / PaperReading`; do not link notes found elsewhere in Notion.
 - For experiments, always name the baselines, explain what each baseline represents, describe the evaluation setting/protocol, then interpret the main result and ablations. Avoid result tables without context.
+- Keep method and experiment roles separate. `方法` explains what the paper does and why the design might work; result tables, timing/memory numbers, benchmark metrics, and deployment-cost evidence belong in `实验`, even when they discuss a method component.
+- Image captions should be plain descriptive names. Do not prefix captions with `Figure`, `Fig.`, `Table`, `Table/Figure`, or numbering unless the number is needed to disambiguate a paper-specific reference.
 
 ## Create Mode Workflow
 
@@ -63,9 +65,9 @@ Prefer the user's style:
 3. Build the Notion page:
    - Metadata block.
    - `现况与动机`: problem, prior routes, why old interfaces fail, related-work links.
-   - `方法`: one-sentence mechanism, task/interface, key designs, key formulas.
+   - `方法`: one-sentence mechanism, task/interface, key designs, key formulas. Do not put benchmark tables, timing numbers, memory results, or result-style cost analysis here.
    - `实验`: experiment questions, baseline descriptions, evaluation set/protocol, main results, important ablations, and what the results do and do not prove. Include enough factual setup before critique.
-   - `思考`: 2-3 compact callouts in the Point What You Mean style: reusable insight (`💡`), serious doubts/limitations (`‼️`), and testable follow-up experiments (`🧪`). Keep each point tied to a mechanism, evidence gap, or experiment design.
+   - `思考`: 2-3 compact Notion callouts in the Point What You Mean style, not plain quote blocks: reusable insight (`💡`), serious doubts/limitations (`‼️`), and testable follow-up experiments (`🧪`). Keep each point tied to a mechanism, evidence gap, or experiment design.
    - Place each figure in context: teaser/problem figures in `现况与动机`, architecture/pipeline figures in `方法`, benchmark/result/ablation figures in `实验`, and only leave a separate figure list if the user explicitly asks.
 4. Search the existing `PaperReading` page for 3-8 important related works and use normal Markdown links to Notion pages. Link only pages that are children of `实验室工作 / PaperReading`. Do **not** use `<page>` tags in generated content; they may be escaped incorrectly.
 5. Create the page under `实验室工作 / PaperReading` without a page cover/background.
