@@ -25,6 +25,8 @@ Do not add many mandatory headings. Add local headings only if they make the pag
 - Motivation / Challenge → `现况与动机`.
 - Insight + Novelty → `方法`, as concise mechanism explanation.
 - Potential Flaw → `思考`, usually in a `‼️` callout.
+- Judge / Debate → `思考`, especially `‼️` callouts for weakened claims, alternative explanations, unfair baselines, missing ablations, or claims that need精读 confirmation.
+- Revised Takeaway → final framing across `现况与动机`, `方法`, `实验`, and especially `思考`; do not write the Notion page by simply following the author's narrative if the debate lowered confidence.
 - Future Direction / Realization → `思考`, usually in a `🧪` callout.
 - User's reusable idea → `思考`, usually in a `💡` callout.
 - Use callout emoji sparingly in `思考` when it improves scanability. Do not use emoji page icons.

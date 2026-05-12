@@ -31,9 +31,12 @@ When the user starts a paper with this skill, keep the paper context active in t
    - `Insight`
    - `Novelty`
    - `Potential Flaw & Future Direction`
+   - `Judge / Debate`
+   - `Revised Takeaway`
    - optional `Realization` only when useful or requested
 3. Mark key claims as `【论文内容】`, `【我的推断】`, or `【不足以判断】`.
 4. After the chat analysis, create or update the Notion page using the light Notion structure below. Do not paste the full coarse-read report into Notion unless the user explicitly asks.
+5. When writing Notion, use `Judge / Debate` and `Revised Takeaway` to decide the final framing. The page should not simply reproduce the author's narrative; it should reflect which claims are well-supported, weakened, or still uncertain.
 
 ### Interactive精读
 
@@ -117,7 +120,7 @@ Prefer the user's style:
    - `现况与动机`: problem, prior routes, why old interfaces fail, related-work links.
    - `方法`: one-sentence mechanism, task/interface, key designs, key formulas. Do not put benchmark tables, timing numbers, memory results, or result-style cost analysis here.
    - `实验`: experiment questions, baseline descriptions, evaluation set/protocol, main results, important ablations, and what the results do and do not prove. Include enough factual setup before critique.
-   - `思考`: 2-3 compact Notion callouts in the Point What You Mean style, not plain quote blocks: reusable insight (`💡`), serious doubts/limitations (`‼️`), and testable follow-up experiments (`🧪`). Keep each point tied to a mechanism, evidence gap, or experiment design.
+   - `思考`: 2-3 compact Notion callouts in the Point What You Mean style, not plain quote blocks: reusable insight (`💡`), serious doubts/limitations (`‼️`), and testable follow-up experiments (`🧪`). Use the Judge/Debate and Revised Takeaway results here, especially for claims that should be weakened, alternative explanations, and follow-up checks. Keep each point tied to a mechanism, evidence gap, or experiment design.
    - Place each figure in context: teaser/problem figures in `现况与动机`, architecture/pipeline figures in `方法`, benchmark/result/ablation figures in `实验`, and only leave a separate figure list if the user explicitly asks.
 4. Search the existing `PaperReading` page for 3-8 important related works and use normal Markdown links to Notion pages. Link only pages that are children of `实验室工作 / PaperReading`. Do **not** use `<page>` tags in generated content; they may be escaped incorrectly.
 5. Create the page under `实验室工作 / PaperReading` without a page cover/background.
