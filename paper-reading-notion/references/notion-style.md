@@ -29,6 +29,7 @@ Do not add many mandatory headings. Add local headings only if they make the pag
 - User's reusable idea → `思考`, usually in a `💡` callout.
 - Use callout emoji sparingly in `思考` when it improves scanability. Do not use emoji page icons.
 - Do not set Notion page covers/backgrounds unless the user explicitly asks.
+- Balance factual reconstruction and critique. The page should contain enough concrete paper content—task/interface, mechanism, dataset, baselines, metrics, ablations, and numbers—before giving judgments. If the content reads mostly like opinions, add more paper-grounded description first.
 
 ## Formulas
 
@@ -49,6 +50,18 @@ For Notion tables, use explicit HTML tables or Notion-compatible tables without 
 ```
 
 Those may become bogus rows in Notion.
+
+## Experiments
+
+The experiment section should not be just a score table. Include:
+
+1. Baselines and what each baseline represents.
+2. Evaluation settings/protocols: datasets, tasks, number of configurations/rollouts, metrics, and whether the setup is simulation or real robot.
+3. Main result table with concrete numbers.
+4. Ablations tied back to the method's core claim.
+5. A short interpretation of what the evidence proves and what it does not prove.
+
+Prefer critical analysis after the factual setup. A useful pattern is: `baseline/setting -> result -> why it supports the mechanism -> limitation of the evidence`.
 
 ## Images
 

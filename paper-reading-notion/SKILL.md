@@ -38,11 +38,13 @@ Only add lower-level subsections when useful. Do not turn the page into a rigid 
 Prefer the user's style:
 
 - Explain mechanisms and problem structure, not only summaries.
+- Keep enough descriptive evidence before critique. A good page should first make the paper's task, mechanism, experiment setup, and concrete numbers clear; then add critical judgment. Do not make the page mostly opinions.
 - Keep formulas and variables when they clarify interfaces.
 - Use paper figures/tables/project-page images as anchors.
 - Preserve a critical voice. Use a few `💡` / `‼️` / `🧪` callouts in `思考` when they make the page easier to scan, matching the user's existing PaperReading style. Do not use emoji page icons.
 - Do not set a Notion page cover/background unless the user explicitly asks.
 - Link related notes only when they are existing pages under `实验室工作 / PaperReading`; do not link notes found elsewhere in Notion.
+- For experiments, always name the baselines, explain what each baseline represents, describe the evaluation setting/protocol, then interpret the main result and ablations. Avoid result tables without context.
 
 ## Create Mode Workflow
 
@@ -61,7 +63,7 @@ Prefer the user's style:
    - Metadata block.
    - `现况与动机`: problem, prior routes, why old interfaces fail, related-work links.
    - `方法`: one-sentence mechanism, task/interface, key designs, key formulas.
-   - `实验`: experiment questions, baseline descriptions, evaluation set/protocol, main results, important ablations, what the results do and do not prove.
+   - `实验`: experiment questions, baseline descriptions, evaluation set/protocol, main results, important ablations, and what the results do and do not prove. Include enough factual setup before critique.
    - `思考`: reusable ideas, doubts/limitations, and possible follow-up experiments, usually grouped in a few `💡` / `‼️` / `🧪` callouts.
 4. Search the existing `PaperReading` page for 3-8 important related works and use normal Markdown links to Notion pages. Link only pages that are children of `实验室工作 / PaperReading`. Do **not** use `<page>` tags in generated content; they may be escaped incorrectly.
 5. Create the page under `实验室工作 / PaperReading` without a page cover/background.
