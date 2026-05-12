@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Render/crop PDF figures into local PNG assets for Notion UI paste.
+"""Render/crop PDF figures into local PNG assets for Notion upload.
 
 This script prepares local PNGs; Notion cannot embed local filesystem paths
-directly through the connector. Paste/upload the generated PNGs through the
-Notion UI with Computer Use so Notion stores them as internal files.
+directly through the connector. Upload the generated PNGs with
+upload_notion_images.py so Notion stores them as internal files.
 
 Examples:
     prepare_notion_figures.py paper.pdf --out-dir assets/tracevla --pages 1 3 8

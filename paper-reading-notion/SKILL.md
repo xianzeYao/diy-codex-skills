@@ -50,9 +50,10 @@ Prefer the user's style:
    - For local PDFs, extract text page by page.
    - If available, find project page/arXiv/GitHub and stable image assets, but do not assume every paper has a project page.
    - Prefer original paper/project figures over generic images.
-   - If no stable figure URL exists, render/crop screenshots into local PNGs. The Notion connector cannot embed local paths, so use Computer Use to operate the Notion UI and paste/upload the PNG like a user clipboard paste; Notion should store it as an internal file.
-   - Use `scripts/prepare_notion_figures.py` to render/crop PNGs and generate a local manifest before UI paste.
-   - Do not create a hosted-image workaround. If UI paste is unavailable or unreliable, keep the figure caption/link and mention that the image was not inserted.
+   - If no stable figure URL exists, render/crop screenshots into local PNGs. The Notion connector cannot embed local paths.
+   - Upload local images with Notion's File Upload API via `scripts/upload_notion_images.py`, then append them as Notion-hosted image blocks. This requires `NOTION_TOKEN` or `NOTION_API_KEY` with access to the target page or its parent. Use `--cleanup` for temporary screenshots after successful upload.
+   - Use `scripts/prepare_notion_figures.py` to render/crop PNGs and generate a local manifest before upload.
+   - Do not create hosted-image or Computer Use paste workarounds. If File Upload API is unavailable, keep the figure caption/link and mention that the image was not inserted.
 2. Run the first-principles analysis internally using `references/first-principles-prompt.md`.
    - Do not paste the full prompt structure into Notion.
    - Map it into the light Notion template.
@@ -65,7 +66,7 @@ Prefer the user's style:
 4. Search the existing `PaperReading` page for 3-8 important related works and use normal Markdown links to Notion pages. Link only pages that are children of `实验室工作 / PaperReading`. Do **not** use `<page>` tags in generated content; they may be escaped incorrectly.
 5. Create the page under `实验室工作 / PaperReading` without a page cover/background.
 6. Backlink maintenance: after creating or updating a page, update only backlink/reference lines in the related existing PaperReading pages that should mention this page. Fetch each target page first, insert only the missing link in the closest related-work/reference sentence or a minimal related-work line, and leave every other character unchanged.
-7. Final response should include the Notion page URL and a short note about any limitations, e.g. PDF figures could not be extracted or UI image paste was unavailable.
+7. Final response should include the Notion page URL and a short note about any limitations, e.g. PDF figures could not be extracted or Notion File Upload API was unavailable.
 
 ## Update Mode Workflow
 
@@ -86,3 +87,5 @@ Prefer the user's style:
 
 - `references/first-principles-prompt.md`: the user's coarse-reading analysis prompt.
 - `references/notion-style.md`: page style, formulas/tables/images, and related-work linking rules.
+- `scripts/prepare_notion_figures.py`: render/crop local PNGs from paper PDFs.
+- `scripts/upload_notion_images.py`: upload local images to Notion with the File Upload API and append image blocks.

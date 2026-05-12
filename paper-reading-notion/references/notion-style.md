@@ -63,8 +63,8 @@ Not every paper has a project page. For papers without stable image URLs, screen
 Fallback workflow for missing figure URLs:
 
 1. Render/crop figures from the PDF with `scripts/prepare_notion_figures.py`.
-2. Prefer the UI paste route when possible: open the target Notion page and paste/upload the generated PNGs, matching how a user screenshots and pastes images into Notion.
-3. Do not create a hosted-image workaround. If UI paste is unavailable or unreliable, keep a caption/link instead of inserting a broken or externally hosted image.
+2. Upload the generated PNGs with `scripts/upload_notion_images.py --page-id <page-id> <image.png> --caption "..." --cleanup`. This uses Notion's File Upload API, stores the binary in Notion-managed storage, appends an image block, and removes temporary local screenshots after success.
+3. Do not create hosted-image or Computer Use paste workarounds. If File Upload API is unavailable or the integration lacks page access, keep a caption/link instead of inserting a broken image.
 
 Do not use decorative or unrelated images. Every image should anchor a method, data, or experiment point.
 
