@@ -99,6 +99,20 @@ Prefer links in context, not a separate dump:
 Visual prompting 路线里可以和 [MOKA](...)、[RoboPoint](...) 一起看。
 ```
 
+For backlinks from existing PaperReading pages, first look for an existing mention of the new paper, acronym, method name, or route. If the mention is already present, link that phrase only and leave the rest of the sentence unchanged:
+
+```markdown
+TraceVLA 这类 visual trace 方法...
+```
+
+becomes:
+
+```markdown
+[TraceVLA](https://www.notion.so/...) 这类 visual trace 方法...
+```
+
+Do not append generic tail lines such as `相关：TraceVLA...` by default. Add a new related-work sentence only when no natural mention exists and the backlink is worth adding as content, not just as navigation.
+
 ## Update Rules
 
 When updating existing pages:
@@ -108,4 +122,5 @@ When updating existing pages:
 - Merge into the closest section.
 - Do not delete critical comments unless asked.
 - Treat user's精读/chatbox conclusions as more authoritative than initial Codex draft.
-- When adding backlinks to related existing PaperReading pages, fetch the target page first and edit only the smallest link/reference text needed. Do not rewrite, reformat, or otherwise clean up those existing pages.
+- When adding backlinks to related existing PaperReading pages, fetch the target page first and edit only the smallest link/reference text needed. Prefer turning an existing mention into a link. Do not rewrite, reformat, append generic tail links, or otherwise clean up those existing pages.
+- When backlinks are changed, report them in the conversation: page title, exact sentence/snippet, and the phrase that became a link. If no natural mention existed and no backlink was added, say that explicitly.

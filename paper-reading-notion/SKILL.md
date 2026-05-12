@@ -67,7 +67,7 @@ Prefer the user's style:
    - `思考`: reusable ideas, doubts/limitations, and possible follow-up experiments, usually grouped in a few `💡` / `‼️` / `🧪` callouts.
 4. Search the existing `PaperReading` page for 3-8 important related works and use normal Markdown links to Notion pages. Link only pages that are children of `实验室工作 / PaperReading`. Do **not** use `<page>` tags in generated content; they may be escaped incorrectly.
 5. Create the page under `实验室工作 / PaperReading` without a page cover/background.
-6. Backlink maintenance: after creating or updating a page, update only backlink/reference lines in the related existing PaperReading pages that should mention this page. Fetch each target page first, insert only the missing link in the closest related-work/reference sentence or a minimal related-work line, and leave every other character unchanged.
+6. Backlink maintenance: after creating or updating a page, inspect related existing PaperReading pages for natural mentions of the new paper/method. If a page already mentions the paper title, acronym, or method name, convert only that existing phrase into a normal Markdown link and keep the sentence text unchanged. Do not append generic tail lines by default. Append a minimal related-work sentence only when there is no natural mention and the backlink is genuinely useful. In the final response, report every backlink edit with page title, the sentence/snippet touched, and the phrase that was linked.
 7. Final response should include the Notion page URL and a short note about any limitations, e.g. PDF figures could not be extracted or Notion File Upload API was unavailable.
 
 ## Update Mode Workflow
@@ -83,7 +83,7 @@ Prefer the user's style:
 3. Update only the relevant section when possible. Avoid rewriting the whole page unless the user asks for a cleanup/rewrite.
 4. Preserve existing user-written thoughts. Merge and refine; do not delete unless asked.
 5. If the user provides chatbox精读 discussion, treat it as higher-priority than the initial AI draft.
-6. When maintaining backlinks, update only the link/reference text in existing PaperReading pages and leave everything else unchanged.
+6. When maintaining backlinks, update only an existing mention into a link when possible. Do not add tail "related" lines unless there is no natural mention and the link is important enough to justify a new sentence. Report exactly which page and sentence changed.
 
 ## References
 
