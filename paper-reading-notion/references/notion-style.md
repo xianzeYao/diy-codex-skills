@@ -24,10 +24,11 @@ Do not add many mandatory headings. Add local headings only if they make the pag
 - Task → `方法`, usually under `Task` or folded into one-sentence mechanism.
 - Motivation / Challenge → `现况与动机`.
 - Insight + Novelty → `方法`, as concise mechanism explanation.
-- Potential Flaw → `思考`, written as explicit doubts or limitations.
-- Future Direction / Realization → `思考`, written as possible follow-up directions.
-- User's reusable idea → `思考`, written as reusable insights.
-- Do not use emoji headings, emoji callouts, or emoji page icons unless the user explicitly asks.
+- Potential Flaw → `思考`, usually in a `‼️` callout.
+- Future Direction / Realization → `思考`, usually in a `🧪` callout.
+- User's reusable idea → `思考`, usually in a `💡` callout.
+- Use callout emoji sparingly in `思考` when it improves scanability. Do not use emoji page icons.
+- Do not set Notion page covers/backgrounds unless the user explicitly asks.
 
 ## Formulas
 
@@ -53,11 +54,17 @@ Those may become bogus rows in Notion.
 
 Prefer:
 
-1. Project page images with stable public URLs.
+1. Project page images that Notion can embed reliably.
 2. Paper/arXiv figures if extractable.
 3. Figure captions and links if images cannot be embedded.
 
-Not every paper has a project page. For papers without stable public image URLs, screenshots/crops are useful only if they can be uploaded or hosted as Notion-visible assets. Do not insert local filesystem image paths such as `/tmp/foo.png` into Notion; the connector strips them and leaves broken image blocks.
+Not every paper has a project page. For papers without stable image URLs, screenshots/crops are useful, but the insertion route matters. Do not insert local filesystem image paths such as `/tmp/foo.png` into Notion through the connector; the connector strips them and leaves broken image blocks.
+
+Fallback workflow for missing figure URLs:
+
+1. Render/crop figures from the PDF with `scripts/prepare_notion_figures.py`.
+2. Prefer the UI paste route when possible: open the target Notion page and paste/upload the generated PNGs, matching how a user screenshots and pastes images into Notion.
+3. Do not create a hosted-image workaround. If UI paste is unavailable or unreliable, keep a caption/link instead of inserting a broken or externally hosted image.
 
 Do not use decorative or unrelated images. Every image should anchor a method, data, or experiment point.
 
@@ -88,3 +95,4 @@ When updating existing pages:
 - Merge into the closest section.
 - Do not delete critical comments unless asked.
 - Treat user's精读/chatbox conclusions as more authoritative than initial Codex draft.
+- When adding backlinks to related existing PaperReading pages, fetch the target page first and edit only the smallest link/reference text needed. Do not rewrite, reformat, or otherwise clean up those existing pages.

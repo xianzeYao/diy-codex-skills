@@ -40,16 +40,19 @@ Prefer the user's style:
 - Explain mechanisms and problem structure, not only summaries.
 - Keep formulas and variables when they clarify interfaces.
 - Use paper figures/tables/project-page images as anchors.
-- Preserve a critical voice, but do not use emoji headings, emoji callouts, or emoji page icons unless the user explicitly asks.
+- Preserve a critical voice. Use a few `💡` / `‼️` / `🧪` callouts in `思考` when they make the page easier to scan, matching the user's existing PaperReading style. Do not use emoji page icons.
+- Do not set a Notion page cover/background unless the user explicitly asks.
 - Link related notes only when they are existing pages under `实验室工作 / PaperReading`; do not link notes found elsewhere in Notion.
 
 ## Create Mode Workflow
 
 1. Read the input paper.
    - For local PDFs, extract text page by page.
-   - If available, find project page/arXiv/GitHub and public image assets, but do not assume every paper has a project page.
+   - If available, find project page/arXiv/GitHub and stable image assets, but do not assume every paper has a project page.
    - Prefer original paper/project figures over generic images.
-   - If no stable public figure URL exists, render/crop screenshots only when they can be uploaded or hosted as Notion-visible assets. Do not insert local filesystem image paths into Notion; the connector strips them.
+   - If no stable figure URL exists, render/crop screenshots into local PNGs. The Notion connector cannot embed local paths, so use Computer Use to operate the Notion UI and paste/upload the PNG like a user clipboard paste; Notion should store it as an internal file.
+   - Use `scripts/prepare_notion_figures.py` to render/crop PNGs and generate a local manifest before UI paste.
+   - Do not create a hosted-image workaround. If UI paste is unavailable or unreliable, keep the figure caption/link and mention that the image was not inserted.
 2. Run the first-principles analysis internally using `references/first-principles-prompt.md`.
    - Do not paste the full prompt structure into Notion.
    - Map it into the light Notion template.
@@ -57,11 +60,12 @@ Prefer the user's style:
    - Metadata block.
    - `现况与动机`: problem, prior routes, why old interfaces fail, related-work links.
    - `方法`: one-sentence mechanism, task/interface, key designs, key formulas.
-   - `实验`: experiment questions, main results, important ablations, what the results do and do not prove.
-   - `思考`: reusable ideas, doubts/limitations, and possible follow-up experiments, written critically without emoji labels.
+   - `实验`: experiment questions, baseline descriptions, evaluation set/protocol, main results, important ablations, what the results do and do not prove.
+   - `思考`: reusable ideas, doubts/limitations, and possible follow-up experiments, usually grouped in a few `💡` / `‼️` / `🧪` callouts.
 4. Search the existing `PaperReading` page for 3-8 important related works and use normal Markdown links to Notion pages. Link only pages that are children of `实验室工作 / PaperReading`. Do **not** use `<page>` tags in generated content; they may be escaped incorrectly.
-5. Create the page under `实验室工作 / PaperReading`.
-6. Final response should include the Notion page URL and a short note about any limitations, e.g. PDF figures could not be extracted and project-page images were used.
+5. Create the page under `实验室工作 / PaperReading` without a page cover/background.
+6. Backlink maintenance: after creating or updating a page, update only backlink/reference lines in the related existing PaperReading pages that should mention this page. Fetch each target page first, insert only the missing link in the closest related-work/reference sentence or a minimal related-work line, and leave every other character unchanged.
+7. Final response should include the Notion page URL and a short note about any limitations, e.g. PDF figures could not be extracted or UI image paste was unavailable.
 
 ## Update Mode Workflow
 
@@ -76,6 +80,7 @@ Prefer the user's style:
 3. Update only the relevant section when possible. Avoid rewriting the whole page unless the user asks for a cleanup/rewrite.
 4. Preserve existing user-written thoughts. Merge and refine; do not delete unless asked.
 5. If the user provides chatbox精读 discussion, treat it as higher-priority than the initial AI draft.
+6. When maintaining backlinks, update only the link/reference text in existing PaperReading pages and leave everything else unchanged.
 
 ## References
 
