@@ -97,7 +97,7 @@ Not every paper has a project page. For papers without stable image URLs, screen
 Fallback workflow for missing figure URLs:
 
 1. Render/crop figures from the PDF with `scripts/prepare_notion_figures.py`.
-2. Upload the generated PNGs with `scripts/upload_notion_images.py --page-id <page-id> <image.png> --caption "..." --cleanup`. This uses Notion's File Upload API, stores the binary in Notion-managed storage, appends an image block, and removes temporary local screenshots after success.
+2. Upload the generated PNGs with `scripts/upload_notion_images.py --page-id <page-id> --after-text "<nearby sentence or heading>" <image.png> --caption "..." --cleanup`, or use `--after-block-id <block-id>` when the anchor block is already known. This uses Notion's File Upload API, stores the binary in Notion-managed storage, inserts the image near the relevant text, and removes temporary local screenshots after success.
 3. Do not create hosted-image or Computer Use paste workarounds. If File Upload API is unavailable or the integration lacks page access, keep a caption/link instead of inserting a broken image.
 
 Golden rule: images must呼应 and help the surrounding正文. Do not insert images for decoration, completeness, or page richness. Each image should make a nearby explanation easier to understand, inspect, or question.
@@ -113,7 +113,7 @@ Place images where they are used, not in a bottom dump:
 - Benchmark screenshots, task grids, result plots, and ablation figures belong in `实验`, next to the setting/result interpretation.
 - A separate `图表摘录` section is only acceptable as temporary staging while uploading/cropping; the final Notion page should usually remove it and distribute the images into context.
 
-If using Notion File Upload API for local screenshots, target the page or content block that keeps the uploaded image near the relevant explanation. The current Notion API route appends uploaded images under the target block; do not leave all uploaded screenshots appended at the page end just because upload defaults are easier.
+If using Notion File Upload API for local screenshots, insert after a real paragraph/heading/table anchor with `--after-text` or `--after-block-id`. Appending to the page root is only acceptable as temporary staging and must be cleaned before final self-check.
 
 ## Related Work Linking
 
