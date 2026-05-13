@@ -1,8 +1,8 @@
 ---
-name: paper-reading-notion
-description: Use as the user's full paper-reading workspace: coarse-read a paper from PDF/arXiv/Zotero path, output first-principles analysis in chat, create/update Notion PaperReading notes, translate/analyze pasted paper paragraphs during精读, backfill the user's thoughts into Notion, and optionally test understanding.
+name: "paper-reading-notion"
+description: "Use as the user's full paper-reading workspace: coarse-read a paper from PDF/arXiv/Zotero path, output first-principles analysis in chat, create/update Notion PaperReading notes, translate/analyze pasted paper paragraphs during精读, backfill the user's thoughts into Notion, and optionally test understanding."
 metadata:
-  short-description: Create/update Notion PaperReading notes from papers
+  short-description: "Create/update Notion PaperReading notes from papers"
 ---
 
 # Paper Reading Notion
