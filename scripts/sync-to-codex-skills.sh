@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+if repo_root="$(git rev-parse --show-toplevel 2>/dev/null)"; then
+  :
+else
+  repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+fi
 codex_home="${CODEX_HOME:-$HOME/.codex}"
 
 src="$repo_root/paper-reading-notion/"
