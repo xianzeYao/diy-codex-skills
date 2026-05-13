@@ -19,8 +19,23 @@ Use this light outer structure:
 
 Do not add many mandatory headings. Add local headings only if they make the page easier to scan.
 
+Optionally add a very short `Paper Compass` callout near the top, after metadata and before `现况与动机`. It should be 4-5 lines at most:
+
+```markdown
+<callout icon="🧭" color="gray_bg">
+这篇的重点不是 ___，而是 ___。
+它反对的旧假设是：___。
+核心 claim：如果 ___，那么 ___，因为 ___。
+最关键证据是：___。
+我应该带走的是：___。
+</callout>
+```
+
+Keep it lightweight. Do not create a large standalone section unless the user asks. If精读 later changes the main interpretation, update this compass.
+
 ## Mapping From Analysis To Notion
 
+- Paper Compass → short top callout or first compact paragraph.
 - Task → `方法`, usually under `Task` or folded into one-sentence mechanism.
 - Motivation / Challenge → `现况与动机`.
 - Insight + Novelty → `方法`, as concise mechanism explanation.

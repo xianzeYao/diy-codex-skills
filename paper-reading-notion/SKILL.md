@@ -26,6 +26,7 @@ When the user starts a paper with this skill, keep the paper context active in t
 
 1. Read the paper and run `references/first-principles-prompt.md`.
 2. If the user asks for output, produce a chat analysis following `references/first-principles-prompt.md` directly, including its section structure and evidence labels:
+   - `Paper Compass`
    - `Task`
    - `Motivation / Challenge`
    - `Insight`
@@ -36,7 +37,8 @@ When the user starts a paper with this skill, keep the paper context active in t
    - optional `Realization` only when useful or requested
 3. Mark key claims as `【论文内容】`, `【我的推断】`, or `【不足以判断】`.
 4. After the chat analysis, create or update the Notion page using the light Notion structure below. Do not paste the full coarse-read report into Notion unless the user explicitly asks.
-5. When writing Notion, use `Judge / Debate` and `Revised Takeaway` to decide the final framing. The page should not simply reproduce the author's narrative; it should reflect which claims are well-supported, weakened, or still uncertain.
+5. When writing Notion, include a very short Paper Compass near the top as a callout or compact paragraph. It should help the user know what to watch for, not add a heavy new section.
+6. When writing Notion, use `Judge / Debate` and `Revised Takeaway` to decide the final framing. The page should not simply reproduce the author's narrative; it should reflect which claims are well-supported, weakened, or still uncertain.
 
 ### Interactive精读
 
@@ -117,6 +119,7 @@ Prefer the user's style:
    - Map it into the light Notion template.
 3. Build the Notion page:
    - Metadata block.
+   - Optional short `Paper Compass` callout: the main thesis, old assumption being challenged, key evidence, and what the user should take away.
    - `现况与动机`: problem, prior routes, why old interfaces fail, related-work links.
    - `方法`: one-sentence mechanism, task/interface, key designs, key formulas. Do not put benchmark tables, timing numbers, memory results, or result-style cost analysis here.
    - `实验`: experiment questions, baseline descriptions, evaluation set/protocol, main results, important ablations, and what the results do and do not prove. Include enough factual setup before critique.
