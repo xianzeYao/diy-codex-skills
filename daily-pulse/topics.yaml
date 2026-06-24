@@ -1,0 +1,44 @@
+topics:
+  - name: "AI agents"
+    priority: medium
+    keywords:
+      - "AI agents"
+      - "agent memory"
+      - "agentic workflow"
+      - "computer use agents"
+    sources:
+      - arxiv
+      - github
+      - web
+    max_items: 3
+    action_threshold: "suggest a task only when the update is directly relevant to current work or learning plans"
+
+  - name: "Robotics and embodied AI"
+    priority: medium
+    keywords:
+      - "robotics foundation model"
+      - "embodied AI"
+      - "robot manipulation"
+      - "vision language action model"
+    sources:
+      - arxiv
+      - github
+      - web
+    max_items: 3
+    action_threshold: "suggest a task only for papers, code, or demos worth reading or reproducing"
+
+  - name: "Auto research"
+    priority: medium
+    keywords:
+      - "automated research"
+      - "AI research assistant"
+      - "deep research agent"
+      - "literature review agent"
+      - "research workflow automation"
+    sources:
+      - arxiv
+      - github
+      - official_docs
+      - web
+    max_items: 3
+    action_threshold: "suggest a task only when the update improves paper reading, literature tracking, experiment planning, or research note workflows"

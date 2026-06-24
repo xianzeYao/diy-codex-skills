@@ -1,0 +1,4 @@
+interface:
+  display_name: "Daily Pulse"
+  short_description: "Notion daily planning and review"
+  default_prompt: "Use $daily-pulse to generate my morning Daily Pulse from Notion."
