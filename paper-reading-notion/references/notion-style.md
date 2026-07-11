@@ -52,13 +52,17 @@ Keep it lightweight. Do not create a large standalone section unless the user as
 
 ## Formulas
 
-Use inline formulas when they are short:
+Use native Notion inline equation rich-text objects for short variables and expressions whenever the API/tooling supports them. Do not leave Markdown `$...$`, backticked pseudo-LaTeX, or escaped LaTeX as plain paragraph text in an API-created page.
+
+Short inline examples:
 
 ```markdown
-标准 VLA 是 $`\hat{a}_t = \pi_\theta(l_t, I_t)`$。
+标准 VLA 是 [inline equation: \hat{a}_t = \pi_\theta(l_t, I_t)]。
 ```
 
 Use display-style formulas only when multi-line or central to the method. Do not isolate every short equation as its own paragraph.
+
+If a formula is reconstructed because the paper describes an interface but does not print an official equation, label it as `按论文描述重构，不是论文原式`. Do not invent unspecified coordinate conventions, losses, or variable semantics. Keep prompt/schema fields such as `TASK`, `PLAN`, `MOVE`, `GRIPPER`, and `VISIBLE_OBJECTS` as plain field names, not math.
 
 ## Tables
 
@@ -103,6 +107,14 @@ Fallback workflow for missing figure URLs:
 Golden rule: images must呼应 and help the surrounding正文. Do not insert images for decoration, completeness, or page richness. Each image should make a nearby explanation easier to understand, inspect, or question.
 
 Do not use decorative or unrelated images. Every image should anchor a method, data, or experiment point.
+
+Crop quality standard:
+
+1. Default to the original paper figure/table plus its caption.
+2. Include surrounding prose only when the prose is intentionally discussed and the crop starts/ends at paragraph boundaries.
+3. Reject half-sentence fragments, clipped captions, missing top/bottom rules, cut-off rows/columns, neighboring asset edges, page numbers, unrelated footnotes, or residual column text.
+4. Run Screenshot QA before upload; failed crops must be redone and excluded from the final upload manifest.
+5. Long appendix prompt pages are optional. Include them only if they remain readable in Notion and can be split at natural headings/logical boundaries; otherwise summarize the prompt schema in text.
 
 Captions should be plain descriptive names. Avoid mechanical prefixes such as `Figure 1.`, `Fig.`, `Table`, or `Table/Figure`; Notion already renders the block as an image/table. Use `TraceVLA overview: original image + trace image + language instruction -> action tokens`, not `Figure 1. TraceVLA overview...`.
 
