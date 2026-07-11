@@ -7,10 +7,12 @@ topics:
       - "agentic workflow"
       - "computer use agents"
     sources:
+      - huggingface_daily_papers
       - arxiv
-      - github
-      - web
-    max_items: 3
+      - openreview
+      - project_page
+    min_papers: 3
+    max_papers: 5
     action_threshold: "suggest a task only when the update is directly relevant to current work or learning plans"
 
   - name: "Robotics and embodied AI"
@@ -21,24 +23,31 @@ topics:
       - "robot manipulation"
       - "vision language action model"
     sources:
+      - huggingface_daily_papers
       - arxiv
-      - github
-      - web
-    max_items: 3
+      - openreview
+      - project_page
+    min_papers: 3
+    max_papers: 5
     action_threshold: "suggest a task only for papers, code, or demos worth reading or reproducing"
 
-  - name: "Auto research"
+  - name: "LLM / MLLM CoT"
     priority: medium
     keywords:
-      - "automated research"
-      - "AI research assistant"
-      - "deep research agent"
-      - "literature review agent"
-      - "research workflow automation"
+      - "chain-of-thought"
+      - "CoT reasoning"
+      - "multimodal reasoning"
+      - "MLLM reasoning"
+      - "test-time reasoning"
+      - "reasoning trace"
+      - "CoT distillation"
+      - "CoT unlearning"
+      - "reasoning verification"
     sources:
+      - huggingface_daily_papers
       - arxiv
-      - github
-      - official_docs
-      - web
-    max_items: 3
-    action_threshold: "suggest a task only when the update improves paper reading, literature tracking, experiment planning, or research note workflows"
+      - openreview
+      - project_page
+    min_papers: 3
+    max_papers: 5
+    action_threshold: "suggest a task only when the paper directly improves CoT technique understanding, LLM/MLLM reasoning evaluation, reasoning trace control, or test-time reasoning workflows"

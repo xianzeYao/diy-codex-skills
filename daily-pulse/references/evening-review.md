@@ -20,7 +20,8 @@ Use this flow for evening reflection, "review today", "复盘今天", or schedul
    - update `下一步行动` when the next step changes;
    - update `下次推进` from cadence.
 8. Write a short summary to Daily Pulse `晚间复盘`, then write the formatted evening review to the Daily Pulse page body. Include outcomes, blockers, energy, tomorrow adjustments, and unresolved items in the page body.
-9. Return a concise evening summary in chat.
+9. If tools are available, collect Hugging Face Daily Papers top 10 by likes/upvotes as the next morning's candidate pool. Write them under `## 明日论文候选池` in the Daily Pulse page body. Do not create tasks from these papers unless the user explicitly asks.
+10. Return a concise evening summary in chat.
 
 ## Review Prompt
 
@@ -80,6 +81,13 @@ Ask follow-up questions only when needed to write correct state. For example, if
 ## 未闭环事项
 
 - <follow-up tasks or questions>
+
+## 明日论文候选池
+
+来源：Hugging Face Daily Papers top 10 by likes/upvotes, collected during evening review.
+
+1. <paper title> - <source link> - <likes/upvotes if visible> - <one-line note>
+2. ...
 ```
 
 ## Chat Summary Template
@@ -102,4 +110,5 @@ Ask follow-up questions only when needed to write correct state. For example, if
 - Record deferral reason in `备注`; do not require a separate deferral counter in MVP.
 - If the user mentions a new action item, create it as a task and note `复盘跟进` in `备注` unless they say not to.
 - Do not put the full review into the `晚间复盘` property. Keep that property as a one-line or short-paragraph summary and put the formatted review in the page body.
+- The Hugging Face Daily Papers top-10 pool is a candidate pool, not the final recommendation list. The next morning brief must filter it by configured topics and the user's current work, then supplement from arXiv/OpenReview/etc. as needed.
 - If multiple writes fail, report which succeeded and which failed.

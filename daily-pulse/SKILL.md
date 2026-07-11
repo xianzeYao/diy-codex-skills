@@ -47,7 +47,7 @@ If the config or a required field is missing, stop and report the missing field.
 - Runtime config setup or troubleshooting: use [configuration.md](references/configuration.md).
 - Adding a course, knowledge point, technical route, routine, or learning plan: use [schedule-intake.md](references/schedule-intake.md).
 - Ranking or "why did you choose these tasks" questions: use [scoring-rules.md](references/scoring-rules.md).
-- Topic intelligence or hotspot tracking: use [topic-briefing.md](references/topic-briefing.md).
+- Topic paper recommendations or hotspot tracking: use [topic-briefing.md](references/topic-briefing.md).
 
 If the user asks for a full Daily Pulse without specifying morning or evening, infer from local time:
 
