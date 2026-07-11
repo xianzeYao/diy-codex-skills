@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Engineer Copilot"
+  short_description: "Turn research intuitions into evidence and understanding"
+  default_prompt: "Use $research-engineer-copilot to turn this research intuition into a testable plan and help me understand each decision."
